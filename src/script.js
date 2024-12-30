@@ -32,7 +32,7 @@ export const setIsInGame = (val) => { isInGame = val; }
 const canvasSetup = () => {
 	chessCanvas.style.display = 'inline';
 	prompts.style.display = 'none';
-	bottomContent.style.display = 'block';
+	bottomContent.style.display = 'flex';
 };
 
 export const mainMenu = () => {
