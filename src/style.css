@@ -1,6 +1,6 @@
 :root {
 	/* TODO: find black/white alternatives in twitter bookmarks and use to select here */
-	background-color: white; 
+	background-color: rgb(21, 29, 36); 
 }
 
 body {
@@ -29,27 +29,55 @@ body {
 #open {
 	display: flex;
 	flex-direction: column;
-	justify-content: center;
+	/* justify-content: center; */
 	align-items: center;
 	margin-top: 20px;
+	/* height: 100vh; */
 }
 
-#open > input, #open > button {
+#open > h1 {
+	color: white;
+	font-family:Arial, Helvetica, sans-serif;
+	font-size: 48px;
+	padding: 10px;
+	text-align: center;
+	box-sizing: border-box;
+}
+
+#open input, #open button {
 	margin: 0;
-	padding: 0;
+	padding: 4px;
 	width: 150px;
+	text-align: center;
+	font-family:Arial, Helvetica, sans-serif;
+	font-size: 24px;
+}
+
+#open p {
+	margin: 10px 0;
+	color: white;
+	font-family:Arial, Helvetica, sans-serif;
+	font-size: 24px;
 	text-align: center;
 }
 
-#open > input {
-	width: 146px;
+#or {
+	margin: 10px;
 }
 
-#open > input::placeholder {
+#open input {
+	width: 146px;
+	background-color: white;
+	border: none;
+	outline: none;
+	border-radius: 3px;
+}
+
+#open input::placeholder {
 	color: black;
 }
 
-#open > p {
+#open p {
 	margin: 0;
 }
 
@@ -58,11 +86,44 @@ body {
 	display: none;
 }
 
-/* #devTools {
-	width: 95vw;
-	margin: 5px auto;
-} */
+#devTools {
+	display: none;
+	margin-top: 10px;
+}
 
 #devTools > p {
 	margin: 0;
+	color: white;
+	font-family:Arial, Helvetica, sans-serif
+}
+
+#interactions {
+	display: flex;
+	justify-content: center;
+}
+
+button {
+	background: rgb(0, 79, 113);
+	border: 2px solid rgb(0, 79, 113);
+	border-radius: 3px;
+	color: white;
+	padding: 2px 4px;
+	margin: 0 4px;
+	font-size: 14px;
+	transition: border 0.2s;
+}
+
+button:hover, button:focus {
+	border: 2px solid white;
+	cursor: pointer;
+}
+
+@media (min-width: 550px) {
+	#open-prompts {
+		display: flex;
+		flex-direction: row;
+		justify-content: center;
+	}
+
+
 }

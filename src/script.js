@@ -13,18 +13,19 @@ const ctx = chessCanvas.getContext('2d');
 const boardColors = ['#eee', '#555'];
 
 const minDim = Math.min(window.innerHeight, window.innerWidth);
-const scale = minDim < 400 ? 0.95 : 0.85;
+const scale = minDim < 400 ? 1 : 0.85;
 const SIDE = Math.floor((minDim * scale) / 8) * 8;
 
 chessCanvas.width = SIDE;
 chessCanvas.height = SIDE;
 const SQUARE = SIDE / 8;
 
-bottomContent.style.width = `${SIDE}px`;
+bottomContent.style.width = `${SIDE-20}px`;
 
-export var isInGame = false;
+var isInGame = false;
+export const setIsInGame = (val) => { isInGame = val; }
 
-console.log(SQUARE);
+// console.log(SQUARE);
 
 
 
@@ -33,6 +34,12 @@ const canvasSetup = () => {
 	prompts.style.display = 'none';
 	bottomContent.style.display = 'block';
 };
+
+export const mainMenu = () => {
+	chessCanvas.style.display = 'none';
+	prompts.style.display = 'flex';
+	bottomContent.style.display = 'none';
+}
 
 //
 // TRACKING/DISPLAYING
@@ -85,8 +92,26 @@ let board = [
 export const initGame = () => {
 	canvasSetup();
 	initialDrawBoard();
-	initialDrawPieces(board);
+
+	if (isInGame) {
+		initialDrawPieces(board);
+		addAllEventListeners();
+	} else {
+		drawWaiting();
+	}
 }
+
+const drawWaiting = () => {
+	// ctx.fillStyle = "rgba(150,150,150,0.7)";
+	ctx.fillStyle = "rgba(255,255,255,0.9)";
+	ctx.fillRect(0,0,SIDE,SIDE);
+	ctx.font = `${SIDE < 400 ? "24" : "32"}px sans-serif`;
+	const xOffset = SIDE < 400 ? 120 : 159;
+	const yOffset = SIDE < 400 ? 6 : 8;
+	// ctx.fillRect(SIDE / 2 - xOffset - yOffset, SIDE / 2 - yOffset*2 - yOffset*1.3, xOffset*2+yOffset*2, yOffset*4+yOffset*2);
+	ctx.fillStyle = "#000";
+  ctx.fillText("Waiting for opponent...", SIDE / 2 - xOffset, SIDE / 2 + yOffset);
+};
 
 // NOTE: this should always be expressed assuming board is from white pieces' perspective
 const drawSquare = (encoding, row, col) => {
@@ -238,19 +263,30 @@ const upEvent = (e) => {
 	const col = Math.floor((touch.clientX - rect.left) / SQUARE);
 	const row = Math.floor((touch.clientY - rect.top) / SQUARE);
 
+
 	// coords.innerHTML = `${row}, ${col}`;
 	isDown = false;
 
 	// console.log(rowFrom, colFrom, row, col);
-	movePiece(board, rowFrom, colFrom, row, col);
+	if (rowFrom !== row || colFrom !== col) movePiece(board, rowFrom, colFrom, row, col);
+	else {
+		let dr = row, dc = col;
+		if (gameColor === 'black') {
+			dr = 7 - row;
+			dc = 7 - col;
+		}
+		drawSquare(board[dr][dc], row, col);
+	}
 };
 
-chessCanvas.addEventListener("mousedown", downEvent);
-chessCanvas.addEventListener("touchstart", downEvent, { passive: true });
-
-chessCanvas.addEventListener("mousemove", moveEvent);
-chessCanvas.addEventListener("touchmove", moveEvent, { passive: true });
-
-chessCanvas.addEventListener("mouseup", upEvent);
-chessCanvas.addEventListener("touchend", upEvent);
-chessCanvas.addEventListener("touchcancel", upEvent);
+const addAllEventListeners = () => {
+	chessCanvas.addEventListener("mousedown", downEvent);
+	chessCanvas.addEventListener("touchstart", downEvent, { passive: true });
+	
+	chessCanvas.addEventListener("mousemove", moveEvent);
+	chessCanvas.addEventListener("touchmove", moveEvent, { passive: true });
+	
+	chessCanvas.addEventListener("mouseup", upEvent);
+	chessCanvas.addEventListener("touchend", upEvent);
+	chessCanvas.addEventListener("touchcancel", upEvent);
+};
