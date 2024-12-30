@@ -20,7 +20,7 @@ chessCanvas.width = SIDE;
 chessCanvas.height = SIDE;
 const SQUARE = SIDE / 8;
 
-bottomContent.style.width = `${SIDE-20}px`;
+document.getElementById("devTools").style.width = `${SIDE-20}px`;
 
 var isInGame = false;
 export const setIsInGame = (val) => { isInGame = val; }
