@@ -56,7 +56,7 @@ socket.on("joinedRoom", (id, oppId, color) => {
   initGame();
 
   copyElem.addEventListener("click", () => {
-    navigator.clipboard.writeText(`http://localhost:5173/?r=${id}`);
+    navigator.clipboard.writeText(`https://chess-io-client.onrender.com/?r=${id}`);
   });
 });
 

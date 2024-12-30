@@ -64,7 +64,7 @@ const initialDrawPieces = (board) => {
 				};
 				img.onerror = function() {
 					console.error('Failed to load the SVG image.');
-					err.innerHTML = 'failed to load svg';
+					// err.innerHTML = 'failed to load svg';
 				};
 			}
 		}

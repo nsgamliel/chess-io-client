@@ -3,42 +3,42 @@
 const pieces = {
 	black: {
 		king: {
-			src: './src/pieces/Chess_kdt45.svg',
+			src: '/svgs/Chess_kdt45.svg',
 		},
 		queen: {
-			src: './src/pieces/Chess_qdt45.svg',
+			src: '/svgs/Chess_qdt45.svg',
 		},
 		bishop: {
-			src: './src/pieces/Chess_bdt45.svg',
+			src: '/svgs/Chess_bdt45.svg',
 		},
 		knight: {
-			src: './src/pieces/Chess_ndt45.svg',
+			src: '/svgs/Chess_ndt45.svg',
 		},
 		rook: {
-			src: './src/pieces/Chess_rdt45.svg',
+			src: '/svgs/Chess_rdt45.svg',
 		},
 		pawn: {
-			src: './src/pieces/Chess_pdt45.svg',
+			src: '/svgs/Chess_pdt45.svg',
 		}
 	},
 	white: {
 		king: {
-			src: './src/pieces/Chess_klt45.svg',
+			src: '/svgs/Chess_klt45.svg',
 		},
 		queen: {
-			src: './src/pieces/Chess_qlt45.svg',
+			src: '/svgs/Chess_qlt45.svg',
 		},
 		bishop: {
-			src: './src/pieces/Chess_blt45.svg',
+			src: '/svgs/Chess_blt45.svg',
 		},
 		knight: {
-			src: './src/pieces/Chess_nlt45.svg',
+			src: '/svgs/Chess_nlt45.svg',
 		},
 		rook: {
-			src: './src/pieces/Chess_rlt45.svg',
+			src: '/svgs/Chess_rlt45.svg',
 		},
 		pawn: {
-			src: './src/pieces/Chess_plt45.svg',
+			src: '/svgs/Chess_plt45.svg',
 		}
 	}
 };
