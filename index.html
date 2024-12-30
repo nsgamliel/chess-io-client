@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="/src/style.css">
+	<title>!chess.com</title>
+</head>
+<body>
+
+	<div id="open">
+		<input type="text" id="join" placeholder="Join Game">
+		<p>Or</p>
+		<button id="create">New Game</button>	
+	</div>
+		
+	<div id="chessContainer">
+		<canvas id="chess"></canvas>
+	</div>
+
+	<div id="bottom-content">
+		<div id="interactions">
+			<button id="copyLink">Copy Game Link</button>
+		</div>
+	
+		<div id="devTools">
+			<p id="room"></p>
+			<p id="self"></p>
+			<p id="opponent"></p>
+		</div>
+	</div>
+	
+	
+	
+	<script type="module" src="/src/script.js"></script>
+	<script type="module" src="/src/socketry.js"></script>
+</body>
+</html>

@@ -1,0 +1,68 @@
+:root {
+	/* TODO: find black/white alternatives in twitter bookmarks and use to select here */
+	background-color: white; 
+}
+
+body {
+	margin: 0;
+	padding: 0;
+}
+
+#chessContainer {
+	display: flex;
+	justify-content: center;
+	width: 100%;
+	user-select: none;
+	margin-top: 10px;
+}
+
+#chess {
+	display: none;
+	touch-action: none;
+	user-select: none;
+}
+
+#status {
+	color: black;
+}
+
+#open {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	margin-top: 20px;
+}
+
+#open > input, #open > button {
+	margin: 0;
+	padding: 0;
+	width: 150px;
+	text-align: center;
+}
+
+#open > input {
+	width: 146px;
+}
+
+#open > input::placeholder {
+	color: black;
+}
+
+#open > p {
+	margin: 0;
+}
+
+#bottom-content {
+	margin: 5px auto;
+	display: none;
+}
+
+/* #devTools {
+	width: 95vw;
+	margin: 5px auto;
+} */
+
+#devTools > p {
+	margin: 0;
+}

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"> -->
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="450" height="450">
+  <g style="fill:#ffffff;stroke:#000000;stroke-width:15;stroke-linejoin:round">
+    <path d="M 90,260 C 175,245 300,245 360,260 L 385,135 L 310,250 L 307,109 L 255,245 L 225,100 L 195,245 L 143,109 L 140,250 L 65,135 L 90,260 z"/>
+    <path d="M 90,260 C 90,280 105,280 115,300 C 125,315 125,310 120,335 C 105,345 110,360 110,360 C 95,375 110,385 110,385 C 175,395 275,395 340,385 C 340,385 355,375 340,360 C 340,360 345,345 330,335 C 325,310 325,315 335,300 C 345,280 360,280 360,260 C 275,245 175,245 90,260 z"/>
+    <path d="M 115,300 C 150,290 300,290 335,300" style="fill:none"/>
+    <path d="M 120,335 C 180,325 270,325 330,335" style="fill:none"/>
+    <circle cx="60" cy="120" r="20" />
+    <circle cx="140" cy="90" r="20" />
+    <circle cx="225" cy="80" r="20" />
+    <circle cx="310" cy="90" r="20" />
+    <circle cx="390" cy="120" r="20" />
+  </g>
+</svg>
