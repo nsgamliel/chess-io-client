@@ -29,10 +29,10 @@ body {
 #open {
 	display: flex;
 	flex-direction: column;
-	/* justify-content: center; */
+	justify-content: center;
 	align-items: center;
 	margin-top: 20px;
-	/* height: 100vh; */
+	height: 80vh;
 }
 
 #open > h1 {
@@ -81,6 +81,15 @@ body {
 	margin: 0;
 }
 
+#gameHead {
+	display: none;
+	color: white;
+	font-family:Arial, Helvetica, sans-serif;
+	font-size: 44px;
+	margin: 15px auto;
+	padding-left: 10px;
+}
+
 #bottom-content {
 	margin: 5px 0;
 	display: none;
@@ -126,6 +135,4 @@ button:hover, button:focus {
 		flex-direction: row;
 		justify-content: center;
 	}
-
-
 }

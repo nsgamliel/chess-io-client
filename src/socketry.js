@@ -9,6 +9,7 @@ console.log(prevId);
 console.log(prevRoom);
 
 const roomElem = document.getElementById("room");
+const gameHeadElem = document.getElementById("gameHead");
 const selfElem = document.getElementById("self");
 const oppElem = document.getElementById("opponent");
 const createElem = document.getElementById("create");
@@ -68,6 +69,7 @@ socket.on("joinedRoom", (id, oppId, color) => {
   
   sessionStorage.setItem('chessIoPrevRoom', id);
   roomElem.innerHTML = `Room: ${id}`;
+  gameHeadElem.innerHTML = `Game ID: ${id}`;
   oppElem.innerHTML = `Opponent: ${oppId ? oppId : 'waiting...'}`;
 
   setIsInGame(oppId ? true : false);

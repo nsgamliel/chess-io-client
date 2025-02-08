@@ -6,6 +6,7 @@ import { socket, gameColor } from './socketry.js';
 //
 
 const chessCanvas = document.getElementById('chess');
+const gameHead = document.getElementById('gameHead');
 const prompts = document.getElementById('open');
 const bottomContent = document.getElementById('bottom-content');
 const roomElem = document.getElementById("room");
@@ -13,10 +14,12 @@ const ctx = chessCanvas.getContext('2d');
 const boardColors = ['#eee', '#555'];
 
 const minDim = Math.min(window.innerHeight, window.innerWidth);
-const scale = minDim < 400 ? 1 : 0.85;
+const scale = minDim < 400 ? 1 : 0.80;
 const SIDE = Math.floor((minDim * scale) / 8) * 8;
 
 chessCanvas.width = SIDE;
+gameHead.style.width = `${SIDE}px`;
+console.log(gameHead.style.width);
 chessCanvas.height = SIDE;
 const SQUARE = SIDE / 8;
 
@@ -31,12 +34,14 @@ export const setIsInGame = (val) => { isInGame = val; }
 
 const canvasSetup = () => {
 	chessCanvas.style.display = 'inline';
+	gameHead.style.display = 'block';
 	prompts.style.display = 'none';
 	bottomContent.style.display = 'flex';
 };
 
 export const mainMenu = () => {
 	chessCanvas.style.display = 'none';
+	gameHead.style.display = 'none';
 	prompts.style.display = 'flex';
 	bottomContent.style.display = 'none';
 }
