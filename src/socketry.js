@@ -20,7 +20,7 @@ const infoElem = document.getElementById("showInfo");
 const devtoolsElem = document.getElementById("devTools");
 const serverNote = document.getElementById('server-note');
 
-const DEV = true;
+const DEV = false;
 const SERVER_URL = DEV ? "http://localhost:3000" : "https://chess-io-server-gyx6.onrender.com";
 const CLIENT_URL = DEV ? "http://localhost:5173" : "https://chess-io-client.onrender.com";
 
