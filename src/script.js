@@ -1,5 +1,6 @@
 import { pieces, pieceEncodings } from './pieces.js';
 import { socket, gameColor } from './socketry.js';
+import { getValidMoves } from './validate-moves.js';
 
 //
 // BOARD SETUP
@@ -27,10 +28,6 @@ document.getElementById("devTools").style.width = `${SIDE-20}px`;
 
 var isInGame = false;
 export const setIsInGame = (val) => { isInGame = val; }
-
-// console.log(SQUARE);
-
-
 
 const canvasSetup = () => {
 	chessCanvas.style.display = 'inline';
@@ -160,12 +157,6 @@ export const movePiece = (board, viewRowFrom, viewColFrom, viewRowTo, viewColTo)
 	drawSquare(board[rowTo][colTo], viewRowTo, viewColTo);
 };
 
-
-
-// initialDrawBoard();
-// initialDrawPieces(board);
-
-
 //
 // EVENT LISTENERS
 //
@@ -175,6 +166,8 @@ let rowFrom;
 let colFrom;
 let interRow;
 let interCol;
+let clickRow;
+let clickCol;
 
 const status = document.getElementById('status');
 const coords = document.getElementById('coordinates');
@@ -201,6 +194,13 @@ const downEvent = (e) => {
 	interRow = row;
 	interCol = col;
 
+
+	ctx.beginPath();
+	ctx.lineWidth = "4";
+	ctx.strokeStyle = "#AAA";
+	ctx.rect(SQUARE * col + 2, SQUARE * row + 2, SQUARE - 4, SQUARE - 4);
+	ctx.stroke();
+
 	// console.log((touch.clientX - rect.left), (touch.clientY - rect.top));
 
 	// status.innerHTML = e.type;
@@ -224,6 +224,8 @@ const moveEvent = (e) => {
 
 		if (row !== interRow || col !== interCol) {
 			let iRow = interRow, iCol = interCol;
+			clickRow = null;
+			clickCol = null;
 			if (gameColor === 'black') {
 				iRow = 7 - interRow;
 				iCol = 7 - interCol;
@@ -273,14 +275,39 @@ const upEvent = (e) => {
 	isDown = false;
 
 	// console.log(rowFrom, colFrom, row, col);
+	console.log(clickRow, clickCol, row, col);
 	if (rowFrom !== row || colFrom !== col) movePiece(board, rowFrom, colFrom, row, col);
-	else {
+	else if (clickRow && clickCol && (clickRow !== row || clickCol !== col)) {
+		console.log('asdf');
+		movePiece(board, clickRow, clickCol, row, col);
+		clickRow = null;
+		clickCol = null;
+	}
+	else if (clickRow && clickCol && (clickRow === row || clickCol === col)) {
 		let dr = row, dc = col;
 		if (gameColor === 'black') {
 			dr = 7 - row;
 			dc = 7 - col;
 		}
 		drawSquare(board[dr][dc], row, col);
+		clickRow = null;
+		clickCol = null;
+	}
+	else {
+		// console.log('the same');
+		let dr = row, dc = col;
+		if (gameColor === 'black') {
+			dr = 7 - row;
+			dc = 7 - col;
+		}
+		drawSquare(board[dr][dc], row, col);
+		clickRow = row;
+		clickCol = col;
+		ctx.beginPath();
+		ctx.lineWidth = "4";
+		ctx.strokeStyle = "#AAA";
+		ctx.rect(SQUARE * col + 2, SQUARE * row + 2, SQUARE - 4, SQUARE - 4);
+		ctx.stroke();
 	}
 };
 

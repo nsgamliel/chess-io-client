@@ -129,10 +129,24 @@ button:hover, button:focus {
 	cursor: pointer;
 }
 
+#server-note {
+	display: none;
+	margin-top: 20px !important;
+	font-size: 16px !important;
+	width: 50vw;
+	color: rgb(205, 0, 0) !important;
+}
+
 @media (min-width: 550px) {
 	#open-prompts {
 		display: flex;
 		flex-direction: row;
 		justify-content: center;
+	}
+}
+
+@media (max-width: 550px) {
+	#server-note {
+		width: 90vw;
 	}
 }

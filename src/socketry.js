@@ -18,8 +18,9 @@ const copyElem = document.getElementById("copyLink");
 const leaveElem = document.getElementById("leave");
 const infoElem = document.getElementById("showInfo");
 const devtoolsElem = document.getElementById("devTools");
+const serverNote = document.getElementById('server-note');
 
-const DEV = false;
+const DEV = true;
 const SERVER_URL = DEV ? "http://localhost:3000" : "https://chess-io-server-gyx6.onrender.com";
 const CLIENT_URL = DEV ? "http://localhost:5173" : "https://chess-io-client.onrender.com";
 
@@ -27,6 +28,12 @@ export var gameColor = '';
 
 export const socket = io(SERVER_URL, {
   query: { room: params.get("r") }
+});
+
+createElem.addEventListener("click", (e) => {
+  setTimeout(() => {
+    serverNote.style.display = 'block';
+  }, 1000);
 });
 
 socket.on("connect", () => {
@@ -66,7 +73,7 @@ socket.on("connect", () => {
 
 socket.on("joinedRoom", (id, oppId, color) => {
   console.log(id, oppId, color);
-  
+
   sessionStorage.setItem('chessIoPrevRoom', id);
   roomElem.innerHTML = `Room: ${id}`;
   gameHeadElem.innerHTML = `Game ID: ${id}`;
@@ -103,6 +110,8 @@ socket.on("oppLeft", () => {
 });
 
 socket.on("leftRoom", () => {
+  serverNote.style.display = 'none';
+  console.log(serverNote.style.display);
   roomElem.innerHTML = '';
   sessionStorage.setItem('chessIoPrevRoom', null);
   setIsInGame(false);
